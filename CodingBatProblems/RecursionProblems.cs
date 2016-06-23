@@ -350,6 +350,58 @@ namespace CodingBatProblems
             return 0;
         }
 
+        //Given an array of ints, compute recursively if the array contains somewhere a value followed in the array by that value times 10. We'll use the convention of considering only the part of the array that begins at the given index. In this way, a recursive call can pass index+1 to move down the array. The initial call will pass in index as 0.
+        //array220([1, 2, 20], 0) → true
+        //array220([3, 30], 0) → true
+        //array220([3], 0) → false
+        public bool array220(int[] nums, int index)
+        {
+            
+            if (index < nums.Length - 1)
+            {
+                if (nums[index] * 10 == nums[index + 1])
+                    return true;
+
+                return array220(nums, index + 1);
+            }
+
+            return false;
+
+
+
+
+        }
+
+        //Given a string, compute recursively a new string where all the adjacent chars are now separated by a "*".
+        //allStar("hello") → "h*e*l*l*o"
+        //allStar("abc") → "a*b*c"
+        //allStar("ab") → "a*b
+        public String allStar(String str)
+        {
+         
+            if (str.Length > 1)
+                return str[0] + "*" + allStar(str.Substring(1));
+
+            return str;
+        }
+
+        //Given a string, compute recursively a new string where identical chars that are adjacent in the original string are separated from each other by a "*".
+        //pairStar("hello") → "hel*lo"
+        //pairStar("xxyy") → "x*xy*y"
+        //pairStar("aaaa") → "a*a*a*a"
+        public String pairStar(String str)
+        {
+
+            if (str.Length < 2)
+                return str;
+
+
+            if (str[0] == str[1])
+                return str[0] + "*" + pairStar(str.Substring(1));
+
+            return str[0] + pairStar(str.Substring(1));
+
+        }
 
     }
 }

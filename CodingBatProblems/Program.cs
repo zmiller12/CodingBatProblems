@@ -29,6 +29,11 @@ namespace CodingBatProblems
             Console.WriteLine(rp.noX("p90xxabxx"));
             Console.WriteLine(rp.array6(new int[] { 1, 0, 8, 6},0));
             Console.WriteLine(rp.array11(new int[] { 1, 11, 2, 11, 6, 4, 11 }, 0));
+            Console.WriteLine(rp.array220(new int[] { 3, 30 }, 0));
+            Console.WriteLine(rp.allStar("hello"));
+            Console.WriteLine(rp.pairStar("hello"));
+
+
         }
     }
 }
