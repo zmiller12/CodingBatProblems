@@ -270,5 +270,86 @@ namespace CodingBatProblems
           
 
         }
+
+        //Given a string, compute recursively(no loops) a new string where all appearances of "pi" have been replaced by "3.14".
+        //changePi("xpix") → "x3.14x"
+        //changePi("pipi") → "3.143.14"
+        //changePi("pip") → "3.14p"
+
+        public String changePi(String str)
+        {
+
+            if (str.Length == 0)
+                return str;
+            if (str.Length == 1)
+                return str;
+            if (str[0] == 'p' && str[1] == 'i')
+                return "3.14" + changePi(str.Substring(2));
+
+            return str[0] + changePi(str.Substring(1));
+
+
+
+        }
+
+        //Given a string, compute recursively a new string where all the 'x' chars have been removed.
+        //noX("xaxb") → "ab"
+        //noX("abc") → "abc"
+        //noX("xx") → ""
+
+        public String noX(String str)
+        {
+            if (str.Length == 0)
+                return str;
+            if (str[0] == 'x')
+                return noX(str.Substring(1));
+
+            return str[0] + noX(str.Substring(1));
+
+        }
+
+        //Given an array of ints, compute recursively if the array contains a 6. We'll use the convention of considering only the part of the array that begins at the given index. In this way, a recursive call can pass index+1 to move down the array. The initial call will pass in index as 0.
+        //array6([1, 6, 4], 0) → true
+        //array6([1, 4], 0) → false
+        //array6([6], 0) → true
+
+        public bool array6(int[] nums, int index)
+        {
+
+            if (nums.Length == 0)
+                return false;
+
+
+            if (nums[index] == 6)
+                return true;
+
+            if (index != nums.Length - 1)
+                return array6(nums, index + 1);
+
+            return false;
+        }
+
+        //Given an array of ints, compute recursively the number of times that the value 11 appears in the array.We'll use the convention of considering only the part of the array that begins at the given index. In this way, a recursive call can pass index+1 to move down the array. The initial call will pass in index as 0.
+        //array11([1, 2, 11], 0) → 1
+        //array11([11, 11], 0) → 2
+        //array11([1, 2, 3, 4], 0) → 0
+
+        public int array11(int[] nums, int index)
+        {
+
+            if (nums.Length == 0)
+                return 0;
+
+            if (!(index > nums.Length - 1))
+            {
+                if (nums[index] == 11)
+                    return 1 + array11(nums, index + 1);
+
+                return array11(nums, index + 1);
+            }
+            return 0;
+        }
+
+
     }
 }

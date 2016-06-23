@@ -11,7 +11,7 @@ namespace CodingBatProblems
         static void Main()
         {
             RecursionProblems rp = new RecursionProblems();
-           
+
 
             Console.WriteLine(rp.factorial(5));
             Console.WriteLine(rp.bunnyEars(3));
@@ -25,7 +25,10 @@ namespace CodingBatProblems
             Console.WriteLine(rp.countX("xxhixx"));
             Console.WriteLine(rp.countHi("xhixhxihihhhih"));
             Console.WriteLine(rp.changeXY("codex"));
-
+            Console.WriteLine(rp.changePi("pixxpi"));
+            Console.WriteLine(rp.noX("p90xxabxx"));
+            Console.WriteLine(rp.array6(new int[] { 1, 0, 8, 6},0));
+            Console.WriteLine(rp.array11(new int[] { 1, 11, 2, 11, 6, 4, 11 }, 0));
         }
     }
 }
