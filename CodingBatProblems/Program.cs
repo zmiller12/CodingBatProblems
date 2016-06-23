@@ -23,6 +23,7 @@ namespace CodingBatProblems
             Console.WriteLine(rp.count8(88028));
             Console.WriteLine(rp.powerN(3, 6));
             Console.WriteLine(rp.countX("xxhixx"));
+            Console.WriteLine(rp.countHi("xhixhxihihhhih"));
 
         }
     }
