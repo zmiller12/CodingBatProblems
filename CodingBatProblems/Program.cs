@@ -24,6 +24,7 @@ namespace CodingBatProblems
             Console.WriteLine(rp.powerN(3, 6));
             Console.WriteLine(rp.countX("xxhixx"));
             Console.WriteLine(rp.countHi("xhixhxihihhhih"));
+            Console.WriteLine(rp.changeXY("codex"));
 
         }
     }
