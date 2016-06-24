@@ -32,6 +32,11 @@ namespace CodingBatProblems
             Console.WriteLine(rp.array220(new int[] { 3, 30 }, 0));
             Console.WriteLine(rp.allStar("hello"));
             Console.WriteLine(rp.pairStar("hello"));
+            Console.WriteLine(rp.endX("xhixxiaaia"));
+            Console.WriteLine(rp.reverse("My Name is Zach"));
+            Console.WriteLine(rp.countPairs("axabxax"));
+            Console.WriteLine(rp.countAbc("ababc"));
+            Console.WriteLine(rp.count11("1112112511"));
 
 
         }

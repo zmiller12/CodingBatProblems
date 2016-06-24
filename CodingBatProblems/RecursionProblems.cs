@@ -403,5 +403,222 @@ namespace CodingBatProblems
 
         }
 
+        //Given a string, compute recursively a new string where all the lowercase 'x' chars have been moved to the end of the string.
+        //endX("xxre") → "rexx"
+        //endX("xxhixx") → "hixxxx"
+        //endX("xhixhix") → "hihixxx"
+        public String endX(String str)
+        {
+            if (str.Length == 0)
+                return str;
+
+            if (str[0] == 'x')
+                return endX(str.Substring(1)) + "x";
+
+            return str[0] + endX(str.Substring(1));
+        }
+
+        //Given a string, recursively reverse the string.
+        //reverse("xxre") → "erxx" 
+        //reverse("xxhxi") → "ixhxx"
+
+        public String reverse(String str)
+        {
+            if (str.Length == 0)
+                return str;
+
+            return reverse(str.Substring(1)) + str[0];
+        }
+
+        //We'll say that a "pair" in a string is two instances of a char separated by a char. So "AxA" the A's make a pair.Pair's can overlap, so "AxAxA" contains 3 pairs -- 2 for A and 1 for x. Recursively compute the number of pairs in the given string.
+        //countPairs("axa") → 1
+        //countPairs("axax") → 2
+        //countPairs("axbx") → 1
+        public int countPairs(String str)
+        {
+            if (str.Length < 3)
+                return 0;
+
+            if (str[0] == str[2])
+                return 1 + countPairs(str.Substring(1));
+
+            return countPairs(str.Substring(1));
+        }
+
+        //Count recursively the total number of "abc" and "aba" substrings that appear in the given string.
+        //countAbc("abc") → 1
+        //countAbc("abcxxabc") → 2
+        //countAbc("abaxxaba") → 2
+        public int countAbc(String str)
+        {
+            if (str.Length < 3)
+                return 0;
+
+            if (str.Substring(0, 3).Equals("abc") || str.Substring(0, 3).Equals("aba"))
+                return 1 + countAbc(str.Substring(1));
+
+            return countAbc(str.Substring(1));
+         }
+
+        //Given a string, compute recursively(no loops) the number of "11" substrings in the string. The "11" substrings should not overlap.
+        //count11("11abc11") → 2
+        //count11("abc11x11x11") → 3
+        //count11("111") → 1
+        public int count11(String str)
+        {
+
+            if (str.Length < 2)
+                return 0;
+
+            if (str.Substring(0, 2).Equals("11"))
+            {
+                return 1 + count11(str.Substring(2));
+            }
+            return count11(str.Substring(1));
+        }
+
+        //Given a string, return recursively a "cleaned" string where adjacent chars that are the same have been reduced to a single char. So "yyzzza" yields "yza".
+        //stringClean("yyzzza") → "yza"
+        //stringClean("abbbcdd") → "abcd"
+        //stringClean("Hello") → "Helo"
+
+        public String stringClean(String str)
+        {
+            if (str.Length < 2)
+                return str;
+            if (str[0] == str[1])
+                return stringClean(str.Substring(1));
+
+            return str[0] + stringClean(str.Substring(1));
+
+        }
+
+        //Given a string, compute recursively the number of times lowercase "hi" appears in the string, however do not count "hi" that have an 'x' immedately before them.
+        //countHi2("ahixhi") → 1
+        //countHi2("ahibhi") → 2
+        //countHi2("xhixhi") → 0
+        public int countHi2(String str)
+        {
+            if (str.Length < 2)
+                return 0;
+
+            if (str.Length >= 3 && str.Substring(0, 3).Equals("xhi"))
+            {
+
+                return countHi2(str.Substring(3));
+            }
+
+            if (str.Substring(0, 2).Equals("hi"))
+            {
+
+                return 1 + countHi2(str.Substring(2));
+            }
+
+            return countHi2(str.Substring(1));
+
+        }
+
+        //Given a string that contains a single pair of parenthesis, compute recursively a new string made of only of the parenthesis and their contents, so "xyz(abc)123" yields "(abc)".
+        //parenBit("xyz(abc)123") → "(abc)"
+        //parenBit("x(hello)") → "(hello)"
+        //parenBit("(xy)1") → "(xy)"
+        public String parenBit(String str)
+        {
+
+
+
+            if (str.Length < 2)
+                return str;
+
+            if (str[0] == '(')
+            {
+
+                if (str[str.Length - 1] == ')')
+
+                    return str;
+
+                else
+
+                    return parenBit(str.Substring(0, str.Length - 1));
+
+            }
+            else
+
+                return parenBit(str.Substring(1));
+        }
+
+        //Given a string, return true if it is a nesting of zero or more pairs of parenthesis, like "(())" or "((()))". Suggestion: check the first and last chars, and then recur on what's inside them.
+        //nestParen("(())") → true
+        //nestParen("((()))") → true
+        //nestParen("(((x))") → false
+        public bool nestParen(String str)
+        {
+            if (str.Length == 0)
+                return true;
+
+            if (str[0] == '(' && str[str.Length - 1] == ')')
+            {
+                return nestParen(str.Substring(1, str.Length - 1));
+            }
+            return false;
+
+        }
+
+        //Given a string and a non-empty substring sub, compute recursively the number of times that sub appears in the string, without the sub strings overlapping.
+        //strCount("catcowcat", "cat") → 2
+        //strCount("catcowcat", "cow") → 1
+        //strCount("catcowcat", "dog") → 0
+        public int strCount(String str, String sub)
+        {
+
+            if (str.Length < sub.Length)
+                return 0;
+
+            if (str.Substring(0, sub.Length).Equals(sub))
+                return 1 + strCount(str.Substring(sub.Length), sub);
+
+            return strCount(str.Substring(1), sub);
+        }
+
+
+        //Given a string and a non-empty substring sub, compute recursively if at least n copies of sub appear in the string somewhere, possibly with overlapping.N will be non-negative.
+        //strCopies("catcowcat", "cat", 2) → true
+        //strCopies("catcowcat", "cow", 2) → false
+        //strCopies("catcowcat", "cow", 1) → true
+
+        public bool strCopies(String str, String sub, int n)
+        {
+
+            if (n == 0)
+                return true;
+
+            if (str.Length < sub.Length)
+                return false;
+
+            if (str.Substring(0, sub.Length).Equals(sub))
+                return strCopies(str.Substring(1), sub, n - 1);
+
+            return strCopies(str.Substring(1), sub, n);
+        }
+
+        //Given a string and a non-empty substring sub, compute recursively the largest substring which starts and ends with sub and return its length.
+        //strDist("catcowcat", "cat") → 9
+        //strDist("catcowcat", "cow") → 3
+        //strDist("cccatcowcatxx", "cat") → 9
+        public int strDist(String str, String sub)
+        {
+            if (str.Length < sub.Length)
+                return 0;
+
+            if (str.Substring(0, sub.Length).Equals(sub) && str.Substring(str.Length - sub.Length).Equals(sub))
+                return str.Length;
+
+            if (!str.Substring(0, sub.Length).Equals(sub))
+                return strDist(str.Substring(1), sub);
+            
+            return strDist(str.Substring(0, str.Length - 1), sub);
+
+        }
+
     }
 }
